@@ -1,5 +1,9 @@
 # Student Pocket Money Management & Financial Intelligence Platform
 
+[![Live Demo](https://img.shields.io/badge/Live_Demo-GitHub_Pages-8b5cf6?style=for-the-badge&logo=github)](https://soumya4504.github.io/Student-Pocket-Money-Management/)
+
+> 🌐 **Live Web App**: [https://soumya4504.github.io/Student-Pocket-Money-Management/](https://soumya4504.github.io/Student-Pocket-Money-Management/)
+
 An advanced student pocket money management and financial analytics system designed with predictive insights, budget tracking, and interactive visualizations.
 
 ---
