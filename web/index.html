@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Pocket Money Management - AI Financial Intelligence</title>
+  <meta name="description" content="Advanced Student Pocket Money Management and Financial Analytics System with predictive insights and budget tracking.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <!-- Chart.js for Interactive Visualizations -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <!-- Top App Navigation -->
+  <nav class="navbar">
+    <div class="nav-brand">
+      <div class="brand-icon">💰</div>
+      <div class="brand-text">
+        <h1>Student Pocket Money Manager</h1>
+        <span class="badge-sub">AI Financial Intelligence Platform</span>
+      </div>
+    </div>
+    <div class="nav-actions">
+      <button class="btn btn-outline" id="exportCsvBtn">📥 Export CSV</button>
+      <label class="btn btn-outline" style="margin-bottom:0; cursor:pointer;">
+        📤 Import CSV <input type="file" id="importCsvInput" accept=".csv" style="display:none;">
+      </label>
+      <button class="btn btn-primary" id="sampleDataBtn">⚡ Load Sample Data</button>
+    </div>
+  </nav>
+
+  <!-- Main App Container -->
+  <main class="container">
+    
+    <!-- Tab Navigation -->
+    <div class="tab-bar">
+      <button class="tab-btn active" data-tab="dashboard-tab">📊 Executive Dashboard</button>
+      <button class="tab-btn" data-tab="entry-tab">✍️ Smart Entry & AI Predictor</button>
+      <button class="tab-btn" data-tab="records-tab">🔍 Records & Student Lookup</button>
+      <button class="tab-btn" data-tab="advisor-tab">💡 AI Budgeting Advisor</button>
+    </div>
+
+    <!-- TAB 1: EXECUTIVE DASHBOARD -->
+    <section id="dashboard-tab" class="tab-content active">
+      <!-- Metric Cards Grid -->
+      <div class="metrics-grid">
+        <div class="metric-card border-indigo">
+          <div class="metric-header">
+            <span class="metric-title">TOTAL STUDENTS</span>
+            <span class="metric-icon">👥</span>
+          </div>
+          <div class="metric-value" id="kpiTotalStudents">0</div>
+          <div class="metric-footer text-muted">Active financial profiles</div>
+        </div>
+
+        <div class="metric-card border-cyan">
+          <div class="metric-header">
+            <span class="metric-title">AVG POCKET MONEY</span>
+            <span class="metric-icon">💵</span>
+          </div>
+          <div class="metric-value" id="kpiAvgPocketMoney">$0.00</div>
+          <div class="metric-footer text-cyan">Per student monthly allowance</div>
+        </div>
+
+        <div class="metric-card border-emerald">
+          <div class="metric-header">
+            <span class="metric-title">AVG SAVINGS RATE</span>
+            <span class="metric-icon">📈</span>
+          </div>
+          <div class="metric-value" id="kpiAvgSavingsRate">0%</div>
+          <div class="metric-footer text-emerald">Of total allowance saved</div>
+        </div>
+
+        <div class="metric-card border-rose">
+          <div class="metric-header">
+            <span class="metric-title">STRESS RISK ALERTS</span>
+            <span class="metric-icon">⚠️</span>
+          </div>
+          <div class="metric-value" id="kpiStressCount">0</div>
+          <div class="metric-footer text-rose">Students in debt/high expense</div>
+        </div>
+      </div>
+
+      <!-- Charts Section -->
+      <div class="charts-grid">
+        <div class="card chart-card">
+          <div class="card-header">
+            <h3>💰 Spending & Savings Allocation</h3>
+            <span class="tag-pill">Aggregate</span>
+          </div>
+          <div class="chart-wrapper">
+            <canvas id="expensePieChart"></canvas>
+          </div>
+        </div>
+
+        <div class="card chart-card">
+          <div class="card-header">
+            <h3>🎯 Spending Persona Distribution</h3>
+            <span class="tag-pill">Behavior Matrix</span>
+          </div>
+          <div class="chart-wrapper">
+            <canvas id="personaBarChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: SMART ENTRY & AI PREDICTOR -->
+    <section id="entry-tab" class="tab-content">
+      <div class="entry-layout">
+        <!-- Form Side -->
+        <div class="card form-card">
+          <div class="card-header">
+            <h3>📝 New Student Financial Profile</h3>
+            <span class="badge-status">Real-time AI Engine</span>
+          </div>
+          <form id="studentEntryForm">
+            <div class="form-group">
+              <label for="studentId">Student ID or Name <span class="req">*</span></label>
+              <input type="text" id="studentId" placeholder="e.g. STU-2045 or Alice" required>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="pocketMoney">Pocket Money ($) <span class="req">*</span></label>
+                <input type="number" id="pocketMoney" min="1" step="any" placeholder="e.g. 500" required>
+              </div>
+              <div class="form-group">
+                <label for="expense">Total Expense ($) <span class="req">*</span></label>
+                <input type="number" id="expense" min="0" step="any" placeholder="e.g. 350" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="savings">Monthly Savings ($) <span class="req">*</span></label>
+                <input type="number" id="savings" min="0" step="any" placeholder="e.g. 150" required>
+              </div>
+              <div class="form-group">
+                <label for="borrowMoney">Borrowed Debt ($) <span class="req">*</span></label>
+                <input type="number" id="borrowMoney" min="0" step="any" placeholder="e.g. 0" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="educationMoney">Education Supplies ($) <span class="req">*</span></label>
+                <input type="number" id="educationMoney" min="0" step="any" placeholder="e.g. 80" required>
+              </div>
+              <div class="form-group">
+                <label for="transportCost">Transport Transit ($) <span class="req">*</span></label>
+                <input type="number" id="transportCost" min="0" step="any" placeholder="e.g. 40" required>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">💾 Save & Compute Prediction</button>
+              <button type="button" class="btn btn-secondary" id="clearFormBtn">🧹 Clear</button>
+              <button type="button" class="btn btn-outline" id="autoFillBtn">⚡ Auto Fill</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- AI Live Scoring Side -->
+        <div class="card predictor-card">
+          <div class="card-header">
+            <h3>🧠 Live AI Assessment & Health Matrix</h3>
+            <span class="badge-status-pulse">Live</span>
+          </div>
+
+          <div class="score-box" id="scoreContainer">
+            <div class="score-label">FINANCIAL HEALTH SCORE</div>
+            <div class="score-number" id="liveHealthScore">100</div>
+            <div class="score-status" id="liveHealthRating">Awaiting Input</div>
+          </div>
+
+          <div class="ai-tags-list">
+            <div class="ai-tag-row">
+              <span class="ai-tag-title">Saving Behavior:</span>
+              <span class="pill-badge pill-info" id="liveSavingBehavior">Awaiting Input</span>
+            </div>
+            <div class="ai-tag-row">
+              <span class="ai-tag-title">Financial Stress:</span>
+              <span class="pill-badge pill-success" id="liveFinancialStress">Awaiting Input</span>
+            </div>
+            <div class="ai-tag-row">
+              <span class="ai-tag-title">Spending Persona:</span>
+              <span class="pill-badge pill-warning" id="liveSpendingType">Awaiting Input</span>
+            </div>
+            <div class="ai-tag-row">
+              <span class="ai-tag-title">Future Outlook:</span>
+              <span class="pill-badge pill-purple" id="liveFuture">Awaiting Input</span>
+            </div>
+          </div>
+
+          <div class="live-progress-group">
+            <div class="prog-item">
+              <div class="prog-header">
+                <span>Expense Ratio:</span>
+                <span id="liveExpenseRatio">0%</span>
+              </div>
+              <div class="prog-bar-bg">
+                <div class="prog-bar-fill bg-amber" id="liveExpenseBar" style="width: 0%"></div>
+              </div>
+            </div>
+
+            <div class="prog-item">
+              <div class="prog-header">
+                <span>Savings Ratio:</span>
+                <span id="liveSavingsRatio">0%</span>
+              </div>
+              <div class="prog-bar-bg">
+                <div class="prog-bar-fill bg-emerald" id="liveSavingsBar" style="width: 0%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: RECORDS & STUDENT LOOKUP -->
+    <section id="records-tab" class="tab-content">
+      <div class="records-layout">
+        <!-- Records Table Side -->
+        <div class="card table-card">
+          <div class="card-header table-header-flex">
+            <div class="search-box">
+              <span>🔍</span>
+              <input type="text" id="recordSearchInput" placeholder="Search by Student ID, Persona, or Stress...">
+            </div>
+            <div class="table-counts" id="tableRecordCount">Showing 0 records</div>
+          </div>
+
+          <div class="table-container">
+            <table class="data-table" id="studentsTable">
+              <thead>
+                <tr>
+                  <th>Student ID</th>
+                  <th>Pocket Money</th>
+                  <th>Expense</th>
+                  <th>Savings</th>
+                  <th>Spending Persona</th>
+                  <th>Stress Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="studentsTableBody">
+                <!-- Rows injected dynamically via app.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Student Detail Dossier Card -->
+        <div class="card dossier-card" id="dossierCard">
+          <div class="card-header">
+            <h3>📑 Student Dossier & AI Plan</h3>
+          </div>
+          <div class="dossier-body" id="dossierBody">
+            <div class="dossier-placeholder">
+              👈 Click on any student row in the table to inspect detailed financial analytics and tailored AI recommendations.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 4: AI BUDGETING ADVISOR -->
+    <section id="advisor-tab" class="tab-content">
+      <div class="advisor-header">
+        <h2>💡 Smart Financial Principles for Students</h2>
+        <p class="text-muted">Proven financial frameworks designed for academic life, allowance budgeting, and debt prevention.</p>
+      </div>
+
+      <div class="rules-grid">
+        <div class="card rule-card border-indigo">
+          <div class="rule-icon">📐</div>
+          <h3>1. The 50 / 30 / 20 Student Framework</h3>
+          <ul class="rule-list">
+            <li><strong>50% Needs:</strong> Study materials, course subscriptions, essential transit passes, nutritious campus meals.</li>
+            <li><strong>30% Wants:</strong> Weekend hangouts, café visits, entertainment subscriptions, hobby gears.</li>
+            <li><strong>20% Savings:</strong> Emergency buffer fund, semester fees cushion, future tech upgrade fund.</li>
+          </ul>
+        </div>
+
+        <div class="card rule-card border-rose">
+          <div class="rule-icon">🛡️</div>
+          <h3>2. Zero-Borrowing & Debt Shield</h3>
+          <ul class="rule-list">
+            <li><strong>Zero Peer Debt:</strong> Borrowing creates financial stress and damages peer relationships.</li>
+            <li><strong>Immediate Payoff:</strong> If debt occurs, dedicate the first 50% of the next allowance to zero it out.</li>
+            <li><strong>The 48-Hour Rule:</strong> Wait 48 hours before any non-essential purchase over $30.</li>
+          </ul>
+        </div>
+
+        <div class="card rule-card border-emerald">
+          <div class="rule-icon">🎓</div>
+          <h3>3. Academic & Transit Cost Optimization</h3>
+          <ul class="rule-list">
+            <li><strong>Digital Textbooks:</strong> Utilize university library reserves, open-source PDFs, or shared second-hand books.</li>
+            <li><strong>Semester Transit Passes:</strong> Save up to 40% on commuting with subsidized student cards.</li>
+            <li><strong>Day 1 Auto-Save:</strong> Move your 20% savings to a separate wallet on the day pocket money arrives.</li>
+          </ul>
+        </div>
+
+        <div class="card rule-card border-cyan">
+          <div class="rule-icon">📊</div>
+          <h3>4. Financial Health Matrix Insights</h3>
+          <ul class="rule-list">
+            <li><strong>Lifestyle-Oriented:</strong> High discretionary leaks; recommended weekly receipt audit.</li>
+            <li><strong>Goal-Oriented:</strong> High investment in education & productive tools; optimal long-term trajectory.</li>
+            <li><strong>Future Planner:</strong> High savings discipline; ready for micro-investments and SIPs.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

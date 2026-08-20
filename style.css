@@ -1,0 +1,306 @@
+/* ==========================================================================
+   CYBERPUNK NEON VIOLET & ELECTRIC CYAN THEME - JAVAFX STYLESHEET
+   Student Pocket Money Management Platform
+   ========================================================================== */
+
+.root {
+    -fx-font-family: 'Segoe UI', 'Plus Jakarta Sans', Helvetica, Arial, sans-serif;
+    -fx-background-color: #080811;
+    -fx-base: #101022;
+    -fx-text-fill: #ffffff;
+}
+
+/* Tab Pane Styling */
+.tab-pane {
+    -fx-tab-min-height: 42px;
+    -fx-tab-max-height: 42px;
+    -fx-background-color: transparent;
+}
+
+.tab-pane .tab-header-area {
+    -fx-padding: 10 20 5 20;
+    -fx-background-color: #101022;
+}
+
+.tab-pane .tab-header-background {
+    -fx-background-color: #101022;
+}
+
+.tab {
+    -fx-background-color: #1c1b36;
+    -fx-background-radius: 8 8 0 0;
+    -fx-padding: 8 22;
+    -fx-text-fill: #a5b4fc;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-border-color: #2e2a5c;
+    -fx-border-width: 1px 1px 0 1px;
+    -fx-border-radius: 8 8 0 0;
+}
+
+.tab:hover {
+    -fx-background-color: #28274d;
+    -fx-text-fill: #22d3ee;
+}
+
+.tab:selected {
+    -fx-background-color: linear-gradient(to right, #8b5cf6, #d946ef);
+    -fx-text-fill: #ffffff;
+    -fx-effect: dropshadow(three-pass-box, rgba(217, 70, 239, 0.5), 10, 0, 0, 0);
+}
+
+.tab .tab-label {
+    -fx-text-fill: #cbd5e1;
+}
+
+.tab:selected .tab-label {
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+}
+
+/* Card Containers */
+.card {
+    -fx-background-color: #16162d;
+    -fx-background-radius: 12px;
+    -fx-border-color: #2e2a5c;
+    -fx-border-width: 1px;
+    -fx-border-radius: 12px;
+    -fx-padding: 20px;
+    -fx-effect: dropshadow(three-pass-box, rgba(139, 92, 246, 0.15), 12, 0, 0, 4);
+}
+
+.stat-card {
+    -fx-background-color: linear-gradient(to bottom right, #16162d, #0d0d1a);
+    -fx-background-radius: 10px;
+    -fx-border-color: #8b5cf6;
+    -fx-border-width: 1px;
+    -fx-border-radius: 10px;
+    -fx-padding: 15px;
+}
+
+.stat-card-title {
+    -fx-text-fill: #a5b4fc;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-letter-spacing: 0.5px;
+}
+
+.stat-card-value {
+    -fx-text-fill: #22d3ee;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(three-pass-box, rgba(34, 211, 238, 0.4), 6, 0, 0, 0);
+}
+
+/* Headers and Labels */
+.header-title {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 24px;
+    -fx-font-weight: 800;
+    -fx-effect: dropshadow(three-pass-box, rgba(139, 92, 246, 0.6), 8, 0, 0, 0);
+}
+
+.header-subtitle {
+    -fx-text-fill: #22d3ee;
+    -fx-font-size: 13px;
+    -fx-font-weight: 600;
+}
+
+.section-title {
+    -fx-text-fill: #22d3ee;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.form-label {
+    -fx-text-fill: #e2e8f0;
+    -fx-font-size: 13px;
+    -fx-font-weight: 600;
+}
+
+/* Text Fields */
+.text-field {
+    -fx-background-color: #0c0b17;
+    -fx-text-fill: #ffffff;
+    -fx-border-color: #3b356e;
+    -fx-border-width: 1px;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-padding: 10px 14px;
+    -fx-font-size: 13px;
+    -fx-prompt-text-fill: #6366f1;
+}
+
+.text-field:focused {
+    -fx-border-color: #22d3ee;
+    -fx-background-color: #121024;
+    -fx-effect: dropshadow(three-pass-box, rgba(34, 211, 238, 0.6), 8, 0, 0, 0);
+}
+
+/* Buttons */
+.btn-primary {
+    -fx-background-color: linear-gradient(to right, #8b5cf6, #d946ef);
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8px;
+    -fx-padding: 10px 22px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(217, 70, 239, 0.5), 8, 0, 0, 2);
+}
+
+.btn-primary:hover {
+    -fx-background-color: linear-gradient(to right, #7c3aed, #c026d3);
+    -fx-effect: dropshadow(three-pass-box, rgba(34, 211, 238, 0.7), 12, 0, 0, 2);
+}
+
+.btn-secondary {
+    -fx-background-color: #201e3b;
+    -fx-text-fill: #e2e8f0;
+    -fx-font-size: 13px;
+    -fx-font-weight: 600;
+    -fx-background-radius: 8px;
+    -fx-padding: 10px 20px;
+    -fx-border-color: #3b356e;
+    -fx-border-radius: 8px;
+    -fx-cursor: hand;
+}
+
+.btn-secondary:hover {
+    -fx-background-color: #2e2b54;
+    -fx-text-fill: #22d3ee;
+    -fx-border-color: #22d3ee;
+}
+
+.btn-success {
+    -fx-background-color: linear-gradient(to right, #00f5a0, #00d2ff);
+    -fx-text-fill: #080811;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8px;
+    -fx-padding: 10px 20px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 245, 160, 0.4), 8, 0, 0, 2);
+}
+
+.btn-success:hover {
+    -fx-background-color: #00d2ff;
+}
+
+/* Badges and Result Labels */
+.badge {
+    -fx-background-radius: 6px;
+    -fx-padding: 5px 12px;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+}
+
+.badge-info {
+    -fx-background-color: rgba(34, 211, 238, 0.15);
+    -fx-text-fill: #22d3ee;
+    -fx-border-color: #22d3ee;
+    -fx-border-radius: 6px;
+}
+
+.badge-success {
+    -fx-background-color: rgba(0, 245, 160, 0.15);
+    -fx-text-fill: #00f5a0;
+    -fx-border-color: #00f5a0;
+    -fx-border-radius: 6px;
+}
+
+.badge-warning {
+    -fx-background-color: rgba(251, 191, 36, 0.15);
+    -fx-text-fill: #fbbf24;
+    -fx-border-color: #fbbf24;
+    -fx-border-radius: 6px;
+}
+
+.badge-danger {
+    -fx-background-color: rgba(255, 0, 85, 0.15);
+    -fx-text-fill: #ff0055;
+    -fx-border-color: #ff0055;
+    -fx-border-radius: 6px;
+}
+
+/* TableView Styling */
+.table-view {
+    -fx-background-color: #16162d;
+    -fx-border-color: #2e2a5c;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #0c0b17;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+    -fx-border-color: #2e2a5c;
+    -fx-border-width: 0 1px 1px 0;
+    -fx-padding: 8px;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #a5b4fc;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+}
+
+.table-row-cell {
+    -fx-background-color: #16162d;
+    -fx-text-fill: #ffffff;
+    -fx-border-color: #242247;
+    -fx-border-width: 0 0 1px 0;
+    -fx-padding: 6px 0;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #111024;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #3b2466;
+    -fx-text-fill: #22d3ee;
+}
+
+.table-row-cell:hover {
+    -fx-background-color: #232047;
+}
+
+/* Charts */
+.chart-pie-label {
+    -fx-fill: #e2e8f0;
+    -fx-font-size: 11px;
+}
+
+.chart-legend {
+    -fx-background-color: transparent;
+    -fx-text-fill: #a5b4fc;
+}
+
+.axis-label {
+    -fx-text-fill: #a5b4fc;
+    -fx-font-size: 11px;
+}
+
+.axis {
+    -fx-tick-label-fill: #a5b4fc;
+    -fx-border-color: #2e2a5c;
+}
+
+/* Scroll Bar */
+.scroll-bar {
+    -fx-background-color: #0c0b17;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #3b356e;
+    -fx-background-radius: 4px;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: #8b5cf6;
+}
